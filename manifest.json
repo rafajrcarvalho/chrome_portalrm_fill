@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "PortalRM Montreal - BOT",
+  "version": "1.0",
+  "description": "Preenche campos repetitivos do Portal RM",
+  "permissions": ["activeTab", "tabs", "storage"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://portalrm.montreal.com.br/Corpore.Net/Main.aspx?*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "48": "icon.png"
+  }
+}

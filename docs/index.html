@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade - PortalRM Montreal - BOT</title>
+    <meta name="description" content="Política de Privacidade da extensão PortalRM Montreal - BOT para Chrome">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 10px 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ccc;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .toggle-switch.active {
+            background: #3498db;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s;
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+
+        .lang-label {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+
+        .lang-label.active {
+            color: #3498db;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+            width: 100%;
+        }
+
+        .header p {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .content {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h2 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            font-size: 1.5em;
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            color: #34495e;
+            margin: 20px 0 15px 0;
+            font-size: 1.2em;
+        }
+
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        ul {
+            margin: 15px 0 15px 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #3498db;
+        }
+
+        .summary {
+            background: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 20px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #27ae60;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin: 5px;
+            font-weight: 500;
+        }
+
+        .permission-box {
+            background: linear-gradient(120deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #e67e22;
+        }
+
+        .chrome-logo {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #ea4335, #4285f4, #34a853, #fbbc05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Language switching */
+        .lang-pt, .lang-en {
+            transition: opacity 0.3s ease;
+        }
+
+        .lang-en {
+            display: none;
+        }
+
+        body.lang-english .lang-pt {
+            display: none;
+        }
+
+        body.lang-english .lang-en {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header, .content {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            h2 {
+                font-size: 1.3em;
+            }
+
+            .language-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-toggle">
+        <span class="lang-label active" id="pt-label">PT</span>
+        <div class="toggle-switch" id="languageToggle">
+            <div class="toggle-slider"></div>
+        </div>
+        <span class="lang-label" id="en-label">EN</span>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <div class="chrome-logo">🔧</div>
+            <h1 class="lang-pt">Política de Privacidade</h1>
+            <h1 class="lang-en">Privacy Policy</h1>
+            <p class="lang-pt"><strong>Chrome Extension - PortalRM Montreal - BOT</strong></p>
+            <p class="lang-en"><strong>Chrome Extension - PortalRM Montreal - BOT</strong></p>
+            <p class="lang-pt">Ferramenta de automação para preenchimento de ponto eletrônico</p>
+            <p class="lang-en">Automation tool for electronic timesheet filling</p>
+        </div>
+
+        <div class="content">
+            <!-- PORTUGUÊS -->
+            <div class="lang-pt">
+                <h2>🔒 1. Introdução</h2>
+                <p>Esta Política de Privacidade descreve como a extensão "PortalRM Montreal - BOT" coleta, usa e protege as informações quando você utiliza nossa extensão do Chrome para automação de preenchimento de ponto eletrônico no Portal RM da Montreal.</p>
+
+                <h2>📊 2. Informações que Coletamos e Armazenamos</h2>
+                
+                <h3>💾 2.1 Dados Armazenados Localmente</h3>
+                <div class="highlight">
+                    <p><strong>A extensão armazena APENAS localmente no seu navegador:</strong></p>
+                    <ul>
+                        <li><strong>Justificativas de ponto:</strong> Texto que você insere para justificar alterações de horários</li>
+                        <li><strong>Dados de horários:</strong> Horários de entrada e saída que você configura para preenchimento automático</li>
+                        <li><strong>ID do usuário:</strong> Identificador extraído da URL do Portal RM para facilitar o acesso</li>
+                        <li><strong>Configurações da extensão:</strong> Preferências de uso da ferramenta</li>
+                    </ul>
+                </div>
+
+                <h3>🚫 2.2 Dados NÃO Coletados</h3>
+                <div class="highlight">
+                    <p><strong>Nossa extensão NÃO coleta, transmite ou compartilha:</strong></p>
+                    <ul>
+                        <li>Senhas ou credenciais de login</li>
+                        <li>Dados pessoais sensíveis</li>
+                        <li>Histórico de navegação</li>
+                        <li>Informações de outros websites</li>
+                        <li>Dados enviados para servidores externos</li>
+                    </ul>
+                </div>
+
+                <h2>🔑 3. Justificativa das Permissões Utilizadas</h2>
+                
+                <div class="permission-box">
+                    <h3>3.1 Permissão "activeTab"</h3>
+                    <p><strong>Necessária para:</strong> Acessar a aba ativa do Portal RM para preencher automaticamente os campos de ponto eletrônico quando solicitado pelo usuário.</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.2 Permissão "tabs"</h3>
+                    <p><strong>Necessária para:</strong> Abrir novas abas direcionando automaticamente para o Portal RM com as configurações do usuário já aplicadas, melhorando a experiência de uso.</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.3 Permissão "storage"</h3>
+                    <p><strong>Necessária para:</strong> Salvar localmente as configurações, horários e justificativas do usuário, permitindo que os dados sejam mantidos entre sessões e sincronizados entre dispositivos (se logado na conta Chrome).</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.4 Permissão de Host "https://portalrm.montreal.com.br/*"</h3>
+                    <p><strong>Necessária para:</strong> Acessar exclusivamente o Portal RM da Montreal para executar o preenchimento automático. A extensão só funciona neste domínio específico.</p>
+                </div>
+
+                <h2>⚙️ 4. Funcionalidade da Extensão</h2>
+                <p>A extensão "PortalRM Montreal - BOT" automatiza as seguintes funcionalidades:</p>
+                <ul>
+                    <li><strong>Extração de ID do usuário:</strong> A partir de URLs do Portal RM</li>
+                    <li><strong>Configuração de horários:</strong> Permite inserir horários de trabalho em lote</li>
+                    <li><strong>Preenchimento automático:</strong> Preenche campos de entrada, saída e justificativas no Portal RM</li>
+                    <li><strong>Abertura automática:</strong> Direciona para a página correta do Portal RM com parâmetros pré-configurados</li>
+                    <li><strong>Visualização de dados:</strong> Mostra preview dos horários antes do preenchimento</li>
+                </ul>
+
+                <h2>💾 5. Armazenamento e Segurança dos Dados</h2>
+                <div class="highlight">
+                    <p><strong>Características do armazenamento:</strong></p>
+                    <ul>
+                        <li><span class="badge">Local Only</span> Dados armazenados apenas localmente</li>
+                        <li><span class="badge">Chrome Sync</span> Sincronização opcional via conta Chrome</li>
+                        <li><span class="badge">Criptografado</span> Dados protegidos pelo sistema do Chrome</li>
+                        <li><span class="badge">Sem Transmissão</span> Não enviamos dados para servidores externos</li>
+                    </ul>
+                </div>
+
+                <h2>🌐 6. Uso de Dados de Terceiros</h2>
+                <p><strong>A extensão NÃO utiliza:</strong></p>
+                <ul>
+                    <li>Google Analytics ou ferramentas de rastreamento</li>
+                    <li>Serviços de terceiros para processamento de dados</li>
+                    <li>APIs externas para envio de informações</li>
+                    <li>Conexões de rede desnecessárias</li>
+                </ul>
+
+                <h2>🤝 7. Compartilhamento de Informações</h2>
+                <p><strong>Não compartilhamos nenhuma informação pessoal ou de configuração com terceiros.</strong> Os dados permanecem exclusivamente no seu dispositivo e, opcionalmente, na sincronização da sua conta Chrome.</p>
+
+                <h2>🔐 8. Segurança e Privacidade</h2>
+                <div class="highlight">
+                    <p><strong>Medidas de segurança implementadas:</strong></p>
+                    <ul>
+                        <li><span class="badge">Acesso Restrito</span> Funciona apenas no Portal RM Montreal</li>
+                        <li><span class="badge">Dados Locais</span> Informações armazenadas apenas no seu navegador</li>
+                        <li><span class="badge">Sem Senhas</span> Não armazena ou acessa credenciais de login</li>
+                        <li><span class="badge">Código Auditável</span> Funcionalidades transparentes e verificáveis</li>
+                    </ul>
+                </div>
+
+                <h2>🗑️ 9. Exclusão de Dados</h2>
+                <p>Você pode excluir todos os dados armazenados pela extensão a qualquer momento:</p>
+                <ul>
+                    <li>Desinstalando a extensão (remove todos os dados automaticamente)</li>
+                    <li>Limpando os dados do Chrome através das configurações do navegador</li>
+                    <li>Utilizando as opções de limpeza dentro da própria extensão</li>
+                </ul>
+
+                <h2>📝 10. Alterações nesta Política</h2>
+                <p>Notificaremos sobre mudanças significativas nesta política através de uma atualização da extensão na Chrome Web Store. Recomendamos verificar periodicamente esta página para atualizações.</p>
+
+                <h2>📧 11. Contato</h2>
+                <div class="contact-section">
+                    <p><strong>Para questões sobre esta Política de Privacidade ou sobre a extensão, entre em contato através de:</strong></p>
+                    <p>📧 rafa17rocha@hotmail.com</p>
+                    <p>🐙 GitHub: github.com/usuario (se aplicável)</p>
+                </div>
+
+                <h2>✅ 12. Conformidade</h2>
+                <p>Esta extensão está em conformidade com:</p>
+                <ul>
+                    <li>Políticas da Chrome Web Store</li>
+                    <li>Lei Geral de Proteção de Dados (LGPD)</li>
+                    <li>Regulamentações de privacidade aplicáveis</li>
+                    <li>Termos de uso do Portal RM Montreal (quando aplicável)</li>
+                </ul>
+
+                <div class="summary">
+                    <h3>📋 Resumo Executivo</h3>
+                    <p><strong>A extensão "PortalRM Montreal - BOT" é uma ferramenta de produtividade que armazena configurações apenas localmente no seu navegador, não transmite dados para servidores externos e funciona exclusivamente para automatizar o preenchimento de ponto eletrônico no Portal RM da Montreal.</strong></p>
+                </div>
+            </div>
+
+            <!-- ENGLISH -->
+            <div class="lang-en">
+                <h2>🔒 1. Introduction</h2>
+                <p>This Privacy Policy describes how the "PortalRM Montreal - BOT" extension collects, uses, and protects information when you use our Chrome extension for automating electronic timesheet filling in Montreal's RM Portal.</p>
+
+                <h2>📊 2. Information We Collect and Store</h2>
+                
+                <h3>💾 2.1 Data Stored Locally</h3>
+                <div class="highlight">
+                    <p><strong>The extension stores ONLY locally in your browser:</strong></p>
+                    <ul>
+                        <li><strong>Timesheet justifications:</strong> Text you enter to justify time changes</li>
+                        <li><strong>Schedule data:</strong> Entry and exit times you configure for automatic filling</li>
+                        <li><strong>User ID:</strong> Identifier extracted from RM Portal URL to facilitate access</li>
+                        <li><strong>Extension settings:</strong> Tool usage preferences</li>
+                    </ul>
+                </div>
+
+                <h3>🚫 2.2 Data NOT Collected</h3>
+                <div class="highlight">
+                    <p><strong>Our extension does NOT collect, transmit, or share:</strong></p>
+                    <ul>
+                        <li>Passwords or login credentials</li>
+                        <li>Sensitive personal data</li>
+                        <li>Browsing history</li>
+                        <li>Information from other websites</li>
+                        <li>Data sent to external servers</li>
+                    </ul>
+                </div>
+
+                <h2>🔑 3. Justification for Permissions Used</h2>
+                
+                <div class="permission-box">
+                    <h3>3.1 "activeTab" Permission</h3>
+                    <p><strong>Required to:</strong> Access the active RM Portal tab to automatically fill timesheet fields when requested by the user.</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.2 "tabs" Permission</h3>
+                    <p><strong>Required to:</strong> Open new tabs automatically directing to RM Portal with user settings already applied, improving user experience.</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.3 "storage" Permission</h3>
+                    <p><strong>Required to:</strong> Save user settings, schedules, and justifications locally, allowing data to be maintained between sessions and synchronized across devices (if logged into Chrome account).</p>
+                </div>
+
+                <div class="permission-box">
+                    <h3>3.4 Host Permission "https://portalrm.montreal.com.br/*"</h3>
+                    <p><strong>Required to:</strong> Access exclusively Montreal's RM Portal to perform automatic filling. The extension only works on this specific domain.</p>
+                </div>
+
+                <h2>⚙️ 4. Extension Functionality</h2>
+                <p>The "PortalRM Montreal - BOT" extension automates the following features:</p>
+                <ul>
+                    <li><strong>User ID extraction:</strong> From RM Portal URLs</li>
+                    <li><strong>Schedule configuration:</strong> Allows bulk entry of work hours</li>
+                    <li><strong>Automatic filling:</strong> Fills entry, exit, and justification fields in RM Portal</li>
+                    <li><strong>Automatic opening:</strong> Directs to the correct RM Portal page with pre-configured parameters</li>
+                    <li><strong>Data visualization:</strong> Shows preview of schedules before filling</li>
+                </ul>
+
+                <h2>💾 5. Data Storage and Security</h2>
+                <div class="highlight">
+                    <p><strong>Storage characteristics:</strong></p>
+                    <ul>
+                        <li><span class="badge">Local Only</span> Data stored only locally</li>
+                        <li><span class="badge">Chrome Sync</span> Optional synchronization via Chrome account</li>
+                        <li><span class="badge">Encrypted</span> Data protected by Chrome's system</li>
+                        <li><span class="badge">No Transmission</span> We don't send data to external servers</li>
+                    </ul>
+                </div>
+
+                <h2>🌐 6. Third-Party Data Usage</h2>
+                <p><strong>The extension does NOT use:</strong></p>
+                <ul>
+                    <li>Google Analytics or tracking tools</li>
+                    <li>Third-party services for data processing</li>
+                    <li>External APIs for sending information</li>
+                    <li>Unnecessary network connections</li>
+                </ul>
+
+                <h2>🤝 7. Information Sharing</h2>
+                <p><strong>We do not share any personal or configuration information with third parties.</strong> Data remains exclusively on your device and, optionally, in your Chrome account synchronization.</p>
+
+                <h2>🔐 8. Security and Privacy</h2>
+                <div class="highlight">
+                    <p><strong>Implemented security measures:</strong></p>
+                    <ul>
+                        <li><span class="badge">Restricted Access</span> Works only on Montreal RM Portal</li>
+                        <li><span class="badge">Local Data</span> Information stored only in your browser</li>
+                        <li><span class="badge">No Passwords</span> Doesn't store or access login credentials</li>
+                        <li><span class="badge">Auditable Code</span> Transparent and verifiable functionalities</li>
+                    </ul>
+                </div>
+
+                <h2>🗑️ 9. Data Deletion</h2>
+                <p>You can delete all data stored by the extension at any time:</p>
+                <ul>
+                    <li>Uninstalling the extension (automatically removes all data)</li>
+                    <li>Clearing Chrome data through browser settings</li>
+                    <li>Using cleanup options within the extension itself</li>
+                </ul>
+
+                <h2>📝 10. Changes to This Policy</h2>
+                <p>We will notify about significant changes to this policy through an extension update on the Chrome Web Store. We recommend periodically checking this page for updates.</p>
+
+                <h2>📧 11. Contact</h2>
+                <div class="contact-section">
+                    <p><strong>For questions about this Privacy Policy or the extension, contact us at:</strong></p>
+                    <p>📧 rafa17rocha@hotmail.com</p>
+                    <p>🐙 GitHub: github.com/user (if applicable)</p>
+                </div>
+
+                <h2>✅ 12. Compliance</h2>
+                <p>This extension complies with:</p>
+                <ul>
+                    <li>Chrome Web Store policies</li>
+                    <li>General Data Protection Law (LGPD)</li>
+                    <li>Applicable privacy regulations</li>
+                    <li>Montreal RM Portal terms of use (when applicable)</li>
+                </ul>
+
+                <div class="summary">
+                    <h3>📋 Executive Summary</h3>
+                    <p><strong>The "PortalRM Montreal - BOT" extension is a productivity tool that stores settings only locally in your browser, does not transmit data to external servers, and works exclusively to automate electronic timesheet filling in Montreal's RM Portal.</strong></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p class="lang-pt">2025 - Chrome Extension PortalRM Montreal - BOT</p>
+            <p class="lang-en">2025 - Chrome Extension PortalRM Montreal - BOT</p>
+        </div>
+    </div>
+
+    <script>
+        const toggleSwitch = document.getElementById('languageToggle');
+        const ptLabel = document.getElementById('pt-label');
+        const enLabel = document.getElementById('en-label');
+        const body = document.body;
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage') || 'pt';
+        if (savedLang === 'en') {
+            switchToEnglish();
+        }
+
+        toggleSwitch.addEventListener('click', function() {
+            if (body.classList.contains('lang-english')) {
+                switchToPortuguese();
+            } else {
+                switchToEnglish();
+            }
+        });
+
+        function switchToEnglish() {
+            body.classList.add('lang-english');
+            toggleSwitch.classList.add('active');
+            ptLabel.classList.remove('active');
+            enLabel.classList.add('active');
+            document.documentElement.lang = 'en';
+            localStorage.setItem('preferredLanguage', 'en');
+        }
+
+        function switchToPortuguese() {
+            body.classList.remove('lang-english');
+            toggleSwitch.classList.remove('active');
+            ptLabel.classList.add('active');
+            enLabel.classList.remove('active');
+            document.documentElement.lang = 'pt-BR';
+            localStorage.setItem('preferredLanguage', 'pt');
+        }
+    </script>
+</body>
+</html> 
